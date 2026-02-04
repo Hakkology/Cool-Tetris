@@ -1,0 +1,11 @@
+  Geri y├╝klenecek projeler belirleniyor...
+  Geri y├╝kleme i├ğin t├╝m projeler g├╝ncel.
+C:\Users\sarib\Desktop\HakanCalismalar\Desktop\WPF-Tetris-Game\AvaloniaTetris\Services\GameState.cs(76,13): error CS0200: 'GameState.BlockQueue' ├Âzelli─şine veya dizin olu┼şturucusuna, salt okunur oldu─şu i├ğin atama yap─▒lamaz [C:\Users\sarib\Desktop\HakanCalismalar\Desktop\WPF-Tetris-Game\AvaloniaTetris\AvaloniaTetris.csproj]
+
+Olu┼şturma BA┼ŞARISIZ OLDU.
+
+C:\Users\sarib\Desktop\HakanCalismalar\Desktop\WPF-Tetris-Game\AvaloniaTetris\Services\GameState.cs(76,13): error CS0200: 'GameState.BlockQueue' ├Âzelli─şine veya dizin olu┼şturucusuna, salt okunur oldu─şu i├ğin atama yap─▒lamaz [C:\Users\sarib\Desktop\HakanCalismalar\Desktop\WPF-Tetris-Game\AvaloniaTetris\AvaloniaTetris.csproj]
+    0 Uyar─▒
+    1 Hata
+
+Ge├ğen S├╝re 00:00:01.02

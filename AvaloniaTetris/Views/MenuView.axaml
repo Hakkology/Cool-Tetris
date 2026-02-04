@@ -1,0 +1,30 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AvaloniaTetris.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+             x:Class="AvaloniaTetris.Views.MenuView"
+             x:DataType="vm:MenuViewModel">
+    <Grid Background="#CC000000">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="20">
+            <TextBlock Text="TETRIS" FontSize="72" FontWeight="Black" Foreground="White" HorizontalAlignment="Center">
+                <TextBlock.Effect>
+                    <DropShadowEffect BlurRadius="20" Color="#00F2FF" Opacity="0.5"/>
+                </TextBlock.Effect>
+            </TextBlock>
+            
+            <Button Command="{Binding StartGameCommand}" 
+                    Content="START GAME" 
+                    Width="200" HorizontalContentAlignment="Center"
+                    FontSize="18" FontWeight="Bold"
+                    Padding="15"
+                    Classes="accent"/>
+                    
+            <Button Command="{Binding ExitCommand}" 
+                    Content="EXIT" 
+                    Width="200" HorizontalContentAlignment="Center"
+                    Padding="10"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

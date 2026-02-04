@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AvaloniaTetris.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="600"
+             x:Class="AvaloniaTetris.Views.Components.Sidebar"
+             x:DataType="vm:GameViewModel">
+    <StackPanel Spacing="20" Margin="20">
+        <Border Background="#2D2D2D" CornerRadius="10" Padding="15">
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock Text="SCORE" Foreground="Gray" FontSize="12" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding GameState.Score}" Foreground="White" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <Border Background="#2D2D2D" CornerRadius="10" Padding="15">
+            <StackPanel Spacing="10">
+                <TextBlock Text="NEXT" Foreground="Gray" FontSize="12" HorizontalAlignment="Center"/>
+                <!-- Container for Next Block Image/Preview -->
+                <Border Width="80" Height="80" Background="#1A1A1A" CornerRadius="5">
+                    <TextBlock Text="{Binding GameState.BlockQueue.NextBlock.ID}" Foreground="DimGray" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Border>
+            </StackPanel>
+        </Border>
+
+        <Border Background="#2D2D2D" CornerRadius="10" Padding="15">
+            <StackPanel Spacing="10">
+                <TextBlock Text="HOLD" Foreground="Gray" FontSize="12" HorizontalAlignment="Center"/>
+                <Border Width="80" Height="80" Background="#1A1A1A" CornerRadius="5">
+                    <TextBlock Text="{Binding GameState.HeldBlock.ID}" Foreground="DimGray" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Border>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,26 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaTetris.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
+        x:Class="AvaloniaTetris.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Avalonia Tetris"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        Width="600" Height="800"
+        Background="#121212">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <TransitioningContentControl Content="{Binding CurrentViewModel}">
+        <TransitioningContentControl.PageTransition>
+            <CrossFade Duration="00:00:00.500" />
+        </TransitioningContentControl.PageTransition>
+    </TransitioningContentControl>
+
+</Window>

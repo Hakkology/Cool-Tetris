@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AvaloniaTetris.ViewModels"
+             xmlns:comp="clr-namespace:AvaloniaTetris.Views.Components"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+             x:Class="AvaloniaTetris.Views.GameView"
+             x:DataType="vm:GameViewModel">
+    <Grid ColumnDefinitions="*, 300">
+        <!-- Game Board Container -->
+        <Border Grid.Column="0" Margin="20" Background="#1A1A1A" CornerRadius="10" BoxShadow="0 0 20 0 #000000">
+            <comp:TetrisBoard GameState="{Binding GameState}" 
+                              Width="300" Height="600"
+                              HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+
+        <!-- Sidebar Container -->
+        <comp:Sidebar Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+        <!-- Game Over Overlay -->
+        <Border Grid.ColumnSpan="2" 
+                IsVisible="{Binding GameState.GameOver}" 
+                Background="#CC000000"
+                ZIndex="100">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="20">
+                <TextBlock Text="GAME OVER" FontSize="48" FontWeight="Bold" Foreground="#FF0033" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding GameState.Score, StringFormat='SCORE: {0}'}" FontSize="24" Foreground="White" HorizontalAlignment="Center"/>
+                <Button Command="{Binding StartGameCommand}" Content="PLAY AGAIN" HorizontalAlignment="Center" Classes="accent" Padding="15,10"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
