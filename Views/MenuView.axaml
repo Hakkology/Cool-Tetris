@@ -2,31 +2,62 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:AvaloniaTetris.ViewModels"
+             xmlns:vm="using:AvaloniaTetris.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
              x:Class="AvaloniaTetris.Views.MenuView"
              x:DataType="vm:MenuViewModel">
+    <UserControl.Styles>
+        <Style Selector="StackPanel.main">
+            <Style.Animations>
+                <Animation Duration="0:0:0.2" Easing="CubicEaseOut">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="0"/>
+                        <Setter Property="TranslateTransform.Y" Value="50"/>
+                        <Setter Property="ScaleTransform.ScaleX" Value="0.95"/>
+                        <Setter Property="ScaleTransform.ScaleY" Value="0.95"/>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1"/>
+                        <Setter Property="TranslateTransform.Y" Value="0"/>
+                        <Setter Property="ScaleTransform.ScaleX" Value="1"/>
+                        <Setter Property="ScaleTransform.ScaleY" Value="1"/>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </UserControl.Styles>
+
     <Grid Background="#CC000000">
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="20">
-            <TextBlock Text="TETRIS" FontSize="72" FontWeight="Black" Foreground="White" HorizontalAlignment="Center">
-                <TextBlock.Effect>
-                    <DropShadowEffect BlurRadius="20" Color="#00F2FF" Opacity="0.5"/>
-                </TextBlock.Effect>
-            </TextBlock>
-            
-            <Button Command="{Binding StartGameCommand}" 
-                    Focusable="False"
-                    Content="START GAME" 
-                    Width="200" HorizontalContentAlignment="Center"
-                    FontSize="18" FontWeight="Bold"
-                    Padding="15"
-                    Classes="accent"/>
-                    
-            <Button Command="{Binding ExitCommand}" 
-                    Focusable="False"
-                    Content="EXIT" 
-                    Width="200" HorizontalContentAlignment="Center"
-                    Padding="10"/>
-        </StackPanel>
+        <Border Background="#1A1A1A" CornerRadius="20" Margin="40" BoxShadow="0 10 40 0 #A0000000">
+            <StackPanel Classes="main" VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="40">
+                <TextBlock Text="COOL TETRIS" FontSize="72" FontWeight="Black" Foreground="White" HorizontalAlignment="Center">
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="20" Color="#00F2FF" Opacity="0.5"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                
+                <StackPanel Spacing="15">
+                    <Button Command="{Binding StartGameCommand}" 
+                            Focusable="False"
+                            Content="START GAME" 
+                            Width="200" HorizontalContentAlignment="Center"
+                            FontSize="18" FontWeight="Bold"
+                            Padding="15"
+                            Classes="accent"/>
+                            
+                    <Button Command="{Binding AboutCommand}" 
+                            Focusable="False"
+                            Content="ABOUT" 
+                            Width="200" HorizontalContentAlignment="Center"
+                            Padding="10"/>
+
+                    <Button Command="{Binding ExitCommand}" 
+                            Focusable="False"
+                            Content="EXIT" 
+                            Width="200" HorizontalContentAlignment="Center"
+                            Padding="10"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>

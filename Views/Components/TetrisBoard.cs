@@ -93,11 +93,14 @@ namespace AvaloniaTetris.Views.Components
 
             // Draw Ghost Block
             int drop = GameState.BlockDropDistance();
-            foreach (var p in GameState.CurrentBlock.TilesPositions())
+            using (context.PushOpacity(0.2))
             {
-                if (p.Row + drop >= 2)
+                foreach (var p in GameState.CurrentBlock.TilesPositions())
                 {
-                    DrawTile(context, (p.Row + drop) - 2, p.Column, GameState.CurrentBlock.ID, tileSize, gap, 0.2);
+                    if (p.Row + drop >= 2)
+                    {
+                        DrawTile(context, (p.Row + drop) - 2, p.Column, GameState.CurrentBlock.ID, tileSize, gap);
+                    }
                 }
             }
 
@@ -106,16 +109,16 @@ namespace AvaloniaTetris.Views.Components
             {
                 if (p.Row >= 2)
                 {
-                    DrawTile(context, p.Row - 2, p.Column, GameState.CurrentBlock.ID, tileSize, gap, 1.0);
+                    DrawTile(context, p.Row - 2, p.Column, GameState.CurrentBlock.ID, tileSize, gap);
                 }
             }
             
             // Draw Ghost Block (TODO)
         }
 
-        private void DrawTile(DrawingContext context, int r, int c, int id, double size, double gap, double opacity = 1.0)
+        private void DrawTile(DrawingContext context, int r, int c, int id, double size, double gap)
         {
-            if (id == 0 && opacity == 1.0)
+            if (id == 0)
             {
                 // Draw empty tile with subtle border
                 var rect = new Rect(c * size + gap, r * size + gap, size - gap * 2, size - gap * 2);

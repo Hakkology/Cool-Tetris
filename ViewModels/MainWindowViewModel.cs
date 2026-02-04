@@ -18,8 +18,33 @@ namespace AvaloniaTetris.ViewModels
             _gameViewModel = new GameViewModel(new GameState());
 
             _menuViewModel.StartGameRequested += OnStartGameRequested;
+            _menuViewModel.ExitRequested += OnExitRequested;
+            _menuViewModel.AboutRequested += OnAboutRequested;
+            _gameViewModel.BackToMenuRequested += OnBackToMenuRequested;
             
             _currentViewModel = _menuViewModel;
+        }
+
+        private void OnAboutRequested()
+        {
+            var aboutWin = new Views.AboutWindow();
+            if (Avalonia.Application.Current?.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                aboutWin.ShowDialog(desktop.MainWindow!);
+            }
+        }
+
+        private void OnExitRequested()
+        {
+            if (Avalonia.Application.Current?.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                desktop.Shutdown();
+            }
+        }
+
+        private void OnBackToMenuRequested()
+        {
+            CurrentViewModel = _menuViewModel;
         }
 
         private void OnStartGameRequested()

@@ -11,6 +11,8 @@ namespace AvaloniaTetris.ViewModels
         [ObservableProperty]
         private GameState _gameState;
 
+        public event Action? BackToMenuRequested;
+
         private bool _isRunning;
 
         public GameViewModel(GameState gameState)
@@ -75,5 +77,12 @@ namespace AvaloniaTetris.ViewModels
 
         [RelayCommand]
         public void Hold() => GameState.HoldBlock();
+
+        [RelayCommand]
+        public void BackToMenu()
+        {
+            _isRunning = false;
+            BackToMenuRequested?.Invoke();
+        }
     }
 }

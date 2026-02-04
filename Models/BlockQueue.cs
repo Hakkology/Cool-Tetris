@@ -1,8 +1,9 @@
+using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 
 namespace AvaloniaTetris.Models
 {
-    public class BlockQueue
+    public partial class BlockQueue : ObservableObject
     {
         private readonly Block[] blocks = new Block[]
         {
@@ -16,11 +17,13 @@ namespace AvaloniaTetris.Models
         };
 
         private readonly Random random = new Random();
-        public Block NextBlock { get; private set; }
+
+        [ObservableProperty]
+        private Block _nextBlock;
 
         public BlockQueue()
         {
-            NextBlock = RandomBlock();
+            _nextBlock = RandomBlock();
         }
 
         private Block RandomBlock()

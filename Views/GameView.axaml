@@ -2,24 +2,96 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:AvaloniaTetris.ViewModels"
-             xmlns:comp="clr-namespace:AvaloniaTetris.Views.Components"
+             xmlns:vm="using:AvaloniaTetris.ViewModels"
+             xmlns:comp="using:AvaloniaTetris.Views.Components"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
              x:Class="AvaloniaTetris.Views.GameView"
              x:DataType="vm:GameViewModel">
+    <UserControl.Styles>
+        <Style Selector="Border.board">
+            <Setter Property="Opacity" Value="1"/>
+            <Style.Animations>
+                <Animation Duration="0:0:0.2" Easing="CubicEaseOut">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="ScaleTransform.ScaleX" Value="0.5"/>
+                        <Setter Property="ScaleTransform.ScaleY" Value="0.5"/>
+                        <Setter Property="Opacity" Value="0"/>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="ScaleTransform.ScaleX" Value="1"/>
+                        <Setter Property="ScaleTransform.ScaleY" Value="1"/>
+                        <Setter Property="Opacity" Value="1"/>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+        
+        <Style Selector="comp|Sidebar">
+            <Style.Animations>
+                <Animation Duration="0:0:0.2" Easing="CubicEaseOut">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="TranslateTransform.X" Value="100"/>
+                        <Setter Property="Opacity" Value="0"/>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="TranslateTransform.X" Value="0"/>
+                        <Setter Property="Opacity" Value="1"/>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="Border.gameOver">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+            <Style.Animations>
+                <Animation Duration="0:0:0.2" Easing="CubicEaseOut">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="TranslateTransform.Y" Value="-100"/>
+                        <Setter Property="ScaleTransform.ScaleX" Value="0.8"/>
+                        <Setter Property="ScaleTransform.ScaleY" Value="0.8"/>
+                        <Setter Property="Opacity" Value="0"/>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="TranslateTransform.Y" Value="0"/>
+                        <Setter Property="ScaleTransform.ScaleX" Value="1"/>
+                        <Setter Property="ScaleTransform.ScaleY" Value="1"/>
+                        <Setter Property="Opacity" Value="1"/>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </UserControl.Styles>
+
     <Grid ColumnDefinitions="*, 400">
         <!-- Game Board Container -->
-        <Border Grid.Column="0" Margin="40" Background="#1A1A1A" CornerRadius="15" BoxShadow="0 0 30 0 #40000000" ClipToBounds="True">
-            <comp:TetrisBoard GameState="{Binding GameState}" 
-                              Width="330" Height="660"
-                              HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Border>
+        <StackPanel Grid.Column="0" VerticalAlignment="Center">
+            <TextBlock Text="COOL TETRIS" 
+                       FontSize="32" FontWeight="Black" 
+                       Foreground="White" 
+                       HorizontalAlignment="Center" 
+                       Margin="0,0,0,20">
+                <TextBlock.Effect>
+                    <DropShadowEffect BlurRadius="15" Color="#00F2FF" Opacity="0.6"/>
+                </TextBlock.Effect>
+            </TextBlock>
+            
+            <Border Classes="board" Margin="20" Background="#1A1A1A" CornerRadius="15" BoxShadow="0 0 30 0 #40000000" ClipToBounds="True">
+                <comp:TetrisBoard GameState="{Binding GameState}" 
+                                  Width="330" Height="660"
+                                  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </StackPanel>
 
         <!-- Sidebar Container -->
         <comp:Sidebar Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
         <!-- Game Over Overlay -->
         <Border Grid.ColumnSpan="2" 
+                Classes="gameOver"
                 IsVisible="{Binding GameState.GameOver}" 
                 Background="#CC000000"
                 ZIndex="100">

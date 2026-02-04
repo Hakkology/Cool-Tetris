@@ -28,8 +28,11 @@ namespace AvaloniaTetris.Services
             }
         }
 
-        public GameGrid GameGrid { get; private set; }
-        public BlockQueue BlockQueue { get; private set; }
+        [ObservableProperty]
+        private GameGrid _gameGrid;
+
+        [ObservableProperty]
+        private BlockQueue _blockQueue;
 
         [ObservableProperty]
         private bool _gameOver;

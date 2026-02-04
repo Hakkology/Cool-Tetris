@@ -47,6 +47,11 @@ namespace AvaloniaTetris.Models
             offset.Column += columns;
         }
 
+        public IEnumerable<Position> GetBaseTiles()
+        {
+            return Tiles[0];
+        }
+
         public void Reset()
         {
             rotationState = 0;

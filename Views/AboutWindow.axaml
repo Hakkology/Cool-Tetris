@@ -1,0 +1,39 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="300"
+        x:Class="AvaloniaTetris.Views.AboutWindow"
+        Title="About Cool Tetris"
+        Width="400" Height="300"
+        WindowStartupLocation="CenterOwner"
+        Background="#1A1A1A"
+        ExtendClientAreaToDecorationsHint="True">
+    <Panel>
+        <Border Background="#222222" CornerRadius="15" Margin="20" BoxShadow="0 10 30 0 #A0000000">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="20">
+                <TextBlock Text="COOL TETRIS" FontSize="32" FontWeight="Black" Foreground="White" HorizontalAlignment="Center">
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="15" Color="#00F2FF" Opacity="0.5"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                
+                <TextBlock Text="Version 1.0.0" Foreground="#888888" HorizontalAlignment="Center"/>
+                
+                <Separator Background="#333333" Margin="0,10"/>
+                
+                <TextBlock Text="Made by Hakkology" FontSize="18" FontWeight="SemiBold" Foreground="#00F2FF" HorizontalAlignment="Center"/>
+                
+                <TextBlock Text="Built with Avalonia UI &amp; FluentAvalonia" Foreground="#666666" FontSize="12" HorizontalAlignment="Center"/>
+
+                <Button Content="CLOSE" 
+                        Click="CloseButton_Click"
+                        HorizontalAlignment="Center" 
+                        Width="100" 
+                        HorizontalContentAlignment="Center"
+                        Margin="0,10,0,0"
+                        Classes="accent"/>
+            </StackPanel>
+        </Border>
+    </Panel>
+</Window>
