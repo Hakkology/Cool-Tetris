@@ -1,47 +1,35 @@
 # WPF-Tetris-Game (Avalonia Refactor)
 
-Cool Tetris oyunu, eski bir WPF sürümünün **Avalonia UI** kullanılarak modernize edilmiş ve refactor edilmiş halidir. Bu proje, klasik Tetris mekaniklerini modern bir masaüstü uygulama framework'ü ile birleştirir.
+A modern Tetris game rebuilt and refactored using **Avalonia UI**, based on an older WPF version. This project combines classic Tetris mechanics with a modern, cross-platform desktop framework.
 
-## 🚀 Proje Hakkında
-Bu proje, eski bir WPF (Windows Presentation Foundation) Tetris uygulamasının, platformlar arası (Cross-platform) destek sunan **Avalonia UI** ve **.NET 9** kullanılarak tamamen yeniden yazılmış ve optimize edilmiş versiyonudur.
+## 🚀 About the Project
+This project is a complete rewrite and optimization of an older WPF (Windows Presentation Foundation) Tetris application using **Avalonia UI** and **.NET 9**. It aims to provide a more modular architecture and cross-platform compatibility.
 
-### Temel Özellikler
-- **Ghost Piece:** Bloğun nereye düşeceğini gösteren gölge sistem.
-- **Hold System:** İhtiyacınız olan bloğu daha sonra ulanmak üzere saklayın.
-- **Next Preview:** Gelecek blokları önizleme özelliği.
-- **Level & Score:** Seviye atladıkça hızlanan oyun ve puanlama sistemi.
-- **Modern UI:** FluentAvalonia ile modern ve şık bir görünüm.
-- **Klavye Kontrolleri:** Hassas ve akıcı oyun deneyimi.
+### Key Features
+- **Ghost Piece:** A visual shadow showing exactly where the block will land.
+- **Hold System:** Save a block to use it later when you need it most.
+- **Next Preview:** Preview upcoming blocks to plan your strategy.
+- **Level & Score System:** Experience increasing difficulty as you level up and track your high scores.
+- **Modern UI:** A sleek, modern look powered by FluentAvalonia.
+- **Responsive Controls:** Precise and fluid gameplay experience.
 
-## 🛠 Teknoloji Yığını
+## 🛠 Tech Stack
 - **Framework:** [Avalonia UI](https://avaloniaui.net/)
 - **Runtime:** [.NET 9](https://dotnet.microsoft.com/download/dotnet/9.0)
-- **Kütüphaneler:**
-  - **CommunityToolkit.Mvvm:** MVVM mimarisi için.
-  - **FluentAvaloniaUI:** Modern UI bileşenleri ve temalar.
-  - **Velopack:** Uygulama güncelleme ve dağıtım yönetimi.
+- **Libraries:**
+  - **CommunityToolkit.Mvvm:** For clean MVVM architecture.
+  - **FluentAvaloniaUI:** Modern UI components and themes.
+  - **Velopack:** For application deployment and updates.
 
-## 🎮 Kontroller
-| Tuş | İşlem |
-|-----|-------|
-| ⬅️ / ➡️ | Sola / Sağa Hareket |
-| ⬇️ | Hızlı Düşüş (Soft Drop) |
-| ⬆️ | Döndür (Rotate clockwise) |
-| Space | Sert Düşüş (Hard Drop) |
-| C / Shift | Bloğu Sakla (Hold) |
-| P | Duraklat (Pause) |
-
-## 🛠 Kurulum ve Çalıştırma
-
-### Gereksinimler
-- [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
-
-### Çalıştırma
-Projeyi klonladıktan sonra ana dizinde terminal üzerinden şu komutu çalıştırabilirsiniz:
-
-```bash
-dotnet run
-```
+## 🎮 Controls
+| Key | Action |
+|-----|--------|
+| ⬅️ / ➡️ | Move Left / Right |
+| ⬇️ | Soft Drop |
+| ⬆️ | Rotate Clockwise |
+| Space | Hard Drop |
+| C / Shift | Hold Block |
+| P | Pause Game |
 
 ---
-*Bu proje eğitim amaçlı geliştirilmiş olup, orijinal WPF sürümünün modern mimariye taşınması sürecini temsil eder.*
+*This project was developed for educational purposes, focusing on migrating an original WPF implementation to a modern, cross-platform architecture.*
