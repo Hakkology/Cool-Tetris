@@ -7,11 +7,11 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
              x:Class="AvaloniaTetris.Views.GameView"
              x:DataType="vm:GameViewModel">
-    <Grid ColumnDefinitions="*, 300">
+    <Grid ColumnDefinitions="*, 400">
         <!-- Game Board Container -->
-        <Border Grid.Column="0" Margin="20" Background="#1A1A1A" CornerRadius="10" BoxShadow="0 0 20 0 #000000">
+        <Border Grid.Column="0" Margin="40" Background="#1A1A1A" CornerRadius="15" BoxShadow="0 0 30 0 #40000000" ClipToBounds="True">
             <comp:TetrisBoard GameState="{Binding GameState}" 
-                              Width="300" Height="600"
+                              Width="330" Height="660"
                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Border>
 
@@ -26,7 +26,9 @@
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="20">
                 <TextBlock Text="GAME OVER" FontSize="48" FontWeight="Bold" Foreground="#FF0033" HorizontalAlignment="Center"/>
                 <TextBlock Text="{Binding GameState.Score, StringFormat='SCORE: {0}'}" FontSize="24" Foreground="White" HorizontalAlignment="Center"/>
-                <Button Command="{Binding StartGameCommand}" Content="PLAY AGAIN" HorizontalAlignment="Center" Classes="accent" Padding="15,10"/>
+                <Button Command="{Binding StartGameCommand}" 
+                        Focusable="False"
+                        Content="PLAY AGAIN" />
             </StackPanel>
         </Border>
     </Grid>

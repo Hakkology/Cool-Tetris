@@ -30,14 +30,29 @@ namespace AvaloniaTetris.ViewModels
 
             _isRunning = true;
 
-            while (_isRunning && !GameState.GameOver)
+            try
             {
-                await Task.Delay(500); // Game speed
-                if (!_isRunning) break;
-                GameState.MoveBlockDown();
+                while (_isRunning && !GameState.GameOver)
+                {
+                    await Task.Delay(500); // Game speed
+                    if (!_isRunning || GameState.GameOver) break;
+                    GameState.MoveBlockDown();
+                }
             }
+            finally
+            {
+                _isRunning = false;
+            }
+        }
 
+        [RelayCommand]
+        public async Task Restart()
+        {
             _isRunning = false;
+            // Wait for existing loop to terminate
+            await Task.Delay(600);
+            GameState.Restart();
+            _ = StartGame();
         }
 
         [RelayCommand]

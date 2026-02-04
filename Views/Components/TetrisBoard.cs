@@ -47,6 +47,7 @@ namespace AvaloniaTetris.Views.Components
         public TetrisBoard()
         {
             InitializeBrushes();
+            ClipToBounds = true;
         }
 
         private static GradientStop newGradientStop(Color color, double offset) => new(color, offset);
@@ -81,12 +82,12 @@ namespace AvaloniaTetris.Views.Components
             var gap = 1.0;
 
             // Draw Background Grid
-            for (int r = 0; r < GameState.GameGrid.Rows; r++)
+            for (int r = 2; r < GameState.GameGrid.Rows; r++)
             {
                 for (int c = 0; c < GameState.GameGrid.Columns; c++)
                 {
                     var id = GameState.GameGrid[r, c];
-                    DrawTile(context, r, c, id, tileSize, gap);
+                    DrawTile(context, r - 2, c, id, tileSize, gap);
                 }
             }
 
@@ -94,13 +95,19 @@ namespace AvaloniaTetris.Views.Components
             int drop = GameState.BlockDropDistance();
             foreach (var p in GameState.CurrentBlock.TilesPositions())
             {
-                DrawTile(context, p.Row + drop, p.Column, GameState.CurrentBlock.ID, tileSize, gap, 0.2);
+                if (p.Row + drop >= 2)
+                {
+                    DrawTile(context, (p.Row + drop) - 2, p.Column, GameState.CurrentBlock.ID, tileSize, gap, 0.2);
+                }
             }
 
             // Draw Current Block
             foreach (var p in GameState.CurrentBlock.TilesPositions())
             {
-                DrawTile(context, p.Row, p.Column, GameState.CurrentBlock.ID, tileSize, gap, 1.0);
+                if (p.Row >= 2)
+                {
+                    DrawTile(context, p.Row - 2, p.Column, GameState.CurrentBlock.ID, tileSize, gap, 1.0);
+                }
             }
             
             // Draw Ghost Block (TODO)

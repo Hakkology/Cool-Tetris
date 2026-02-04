@@ -3,34 +3,51 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:AvaloniaTetris.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="600"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="800"
              x:Class="AvaloniaTetris.Views.Components.Sidebar"
              x:DataType="vm:GameViewModel">
-    <StackPanel Spacing="20" Margin="20">
-        <Border Background="#2D2D2D" CornerRadius="10" Padding="15">
-            <StackPanel HorizontalAlignment="Center">
-                <TextBlock Text="SCORE" Foreground="Gray" FontSize="12" HorizontalAlignment="Center"/>
-                <TextBlock Text="{Binding GameState.Score}" Foreground="White" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
-            </StackPanel>
-        </Border>
+    <ScrollViewer>
+        <StackPanel Spacing="30" Margin="30">
+            <!-- Score Section -->
+            <Border Background="#1E1E1E" CornerRadius="15" Padding="25" BoxShadow="0 4 10 0 #40000000">
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="SCORE" Foreground="#00F2FF" FontSize="14" FontWeight="SemiBold" LetterSpacing="2" HorizontalAlignment="Center"/>
+                    <TextBlock Text="{Binding GameState.Score}" Foreground="White" FontSize="36" FontWeight="Black" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                </StackPanel>
+            </Border>
 
-        <Border Background="#2D2D2D" CornerRadius="10" Padding="15">
-            <StackPanel Spacing="10">
-                <TextBlock Text="NEXT" Foreground="Gray" FontSize="12" HorizontalAlignment="Center"/>
-                <!-- Container for Next Block Image/Preview -->
-                <Border Width="80" Height="80" Background="#1A1A1A" CornerRadius="5">
-                    <TextBlock Text="{Binding GameState.BlockQueue.NextBlock.ID}" Foreground="DimGray" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                </Border>
-            </StackPanel>
-        </Border>
+            <!-- Next Block Section -->
+            <Border Background="#1E1E1E" CornerRadius="15" Padding="25" BoxShadow="0 4 10 0 #40000000">
+                <StackPanel Spacing="15">
+                    <TextBlock Text="NEXT" Foreground="#CC00FF" FontSize="14" FontWeight="SemiBold" LetterSpacing="2" HorizontalAlignment="Center"/>
+                    <Border Width="120" Height="120" Background="#121212" CornerRadius="10" BorderBrush="#333333" BorderThickness="1">
+                        <Viewbox Stretch="Uniform" Margin="10">
+                             <TextBlock Text="{Binding GameState.BlockQueue.NextBlock.ID}" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Viewbox>
+                    </Border>
+                </StackPanel>
+            </Border>
 
-        <Border Background="#2D2D2D" CornerRadius="10" Padding="15">
-            <StackPanel Spacing="10">
-                <TextBlock Text="HOLD" Foreground="Gray" FontSize="12" HorizontalAlignment="Center"/>
-                <Border Width="80" Height="80" Background="#1A1A1A" CornerRadius="5">
-                    <TextBlock Text="{Binding GameState.HeldBlock.ID}" Foreground="DimGray" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                </Border>
-            </StackPanel>
-        </Border>
-    </StackPanel>
+            <!-- Hold Block Section -->
+            <Border Background="#1E1E1E" CornerRadius="15" Padding="25" BoxShadow="0 4 10 0 #40000000">
+                <StackPanel Spacing="15">
+                    <TextBlock Text="HOLD" Foreground="#FF9900" FontSize="14" FontWeight="SemiBold" LetterSpacing="2" HorizontalAlignment="Center"/>
+                    <Border Width="120" Height="120" Background="#121212" CornerRadius="10" BorderBrush="#333333" BorderThickness="1">
+                         <Viewbox Stretch="Uniform" Margin="10">
+                            <TextBlock Text="{Binding GameState.HeldBlock.ID}" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                         </Viewbox>
+                    </Border>
+                </StackPanel>
+            </Border>
+            
+            <Button Command="{Binding RestartCommand}" 
+                    Focusable="False"
+                    Content="RESTART" 
+                    HorizontalAlignment="Stretch" 
+                    HorizontalContentAlignment="Center"
+                    Padding="15"
+                    Background="#333333"
+                    CornerRadius="10"/>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

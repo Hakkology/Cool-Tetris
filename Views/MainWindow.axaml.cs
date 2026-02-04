@@ -22,24 +22,31 @@ namespace AvaloniaTetris.Views
                 {
                     case Key.Left:
                         gameVM.MoveLeftCommand.Execute(null);
+                        e.Handled = true;
                         break;
                     case Key.Right:
                         gameVM.MoveRightCommand.Execute(null);
+                        e.Handled = true;
                         break;
                     case Key.Down:
                         gameVM.MoveDownCommand.Execute(null);
+                        e.Handled = true;
                         break;
                     case Key.Up:
                         gameVM.RotateCWCommand.Execute(null);
+                        e.Handled = true;
                         break;
                     case Key.Z:
                         gameVM.RotateCCWCommand.Execute(null);
+                        e.Handled = true;
                         break;
                     case Key.Space:
                         gameVM.DropCommand.Execute(null);
+                        e.Handled = true;
                         break;
                     case Key.C:
                         gameVM.HoldCommand.Execute(null);
+                        e.Handled = true;
                         break;
                 }
             }

@@ -9,8 +9,8 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="Avalonia Tetris"
         WindowStartupLocation="CenterScreen"
-        CanResize="False"
-        Width="600" Height="800"
+        CanResize="True"
+        Width="900" Height="800"
         Background="#121212">
 
     <Design.DataContext>
